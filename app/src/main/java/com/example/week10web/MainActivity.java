@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     WebView web;
     EditText edit;
     String input;
-    String prev;
-    String next;
+    //String prev;
+    //String next;
+    String current;
 
 
-    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,30 +57,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void webResults(View v){
-        prev = web.getUrl();
-        next = null;
+//        prev = web.getUrl();
+//        next = null;
         input = edit.getText().toString();
 
         web.loadUrl("http://" + input);
+        //current = web.getUrl();
     }
 
     public void refreshPage(View v){
-        String webUrl = web.getUrl();
-        web.loadUrl(webUrl);
+        current = web.getUrl();
+        web.loadUrl(current);
     }
 
     public void prevPage(View v){
-        next = prev;
-        web.loadUrl(prev);
+//        next = web.getUrl();
+//        web.loadUrl(prev);
+//        current = prev;
+//        prev = null;
 
-        prev = null;
+        web.goBack();
     }
 
     public void nextPage(View v){
-        prev = next;
-        web.loadUrl(next);
-
-        next = null;
+//        prev = web.getUrl();
+//        web.loadUrl(next);
+//        current = next;
+//        next = null;
+        web.goForward();
     }
 }
